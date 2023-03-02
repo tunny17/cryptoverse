@@ -4,7 +4,7 @@ import { Layout, Typography, Space } from 'antd'
 
 // local imports
 import './App.css'
-import { Navbar } from './components';
+import { Navbar, Exchange, HomePage, Cryptocurrencies, News, CryptoDetails } from './components';
 
 
 function App() {
@@ -14,7 +14,27 @@ function App() {
         <Navbar />
       </div>
       <div className="main">
-
+        <Layout>
+          <div className="routes">
+            <Switch>
+              <Route exact path='/'>
+                <HomePage />
+              </Route>
+              <Route exact path='/exchanges'>
+                <Exchange />
+              </Route>
+              <Route exact path='/cryptocurrencies'>
+                <Cryptocurrencies />
+              </Route>
+              <Route exact path='/crypto/:coinId'>
+                <CryptoDetails />
+              </Route>
+              <Route exact path='/news'>
+                <News />
+              </Route>
+            </Switch>
+          </div>
+        </Layout>
       </div>
       <div className="footer"></div>
     </div>
