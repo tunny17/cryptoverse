@@ -5,8 +5,10 @@ import { Card, Row, Col, Input } from 'antd';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
 
-const Cryptocurrencies = () => {
-  const { data: cryptosList, isFetching } = useGetCryptosQuery();
+const Cryptocurrencies = ({ simplified }) => {
+  const count = simplified ? 10 : 100;
+
+  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
 
   const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
 
@@ -20,7 +22,7 @@ const Cryptocurrencies = () => {
             <Link to={`/crypto/${currency.id}`}>
               <Card 
                 title={`${currency.rank}. ${currency.name}`}
-                extra={<img className='crypto-image' src={currency.iconUrl} />}
+                extra={<img className='crypto-image' src={currency.iconUrl} alt='icons'/>}
                 hoverable
               >
                 <p>Price: {millify(currency.price)}</p>
