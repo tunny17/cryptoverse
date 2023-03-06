@@ -389,3 +389,8 @@ input:hover {
   padding: 20px;
   align-items: center;
 }
+
+.news-title-image {
+  max-width: 120px;
+  max-height: 90px;
+}

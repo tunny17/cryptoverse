@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { setup } from '@reduxjs/toolkit/query/react';
 
 import { cryptoApi } from '../services/cryptoApi';
 import { cryptoNewsApi } from '../services/cryptoNewsApi';

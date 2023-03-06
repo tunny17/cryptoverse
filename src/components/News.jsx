@@ -5,8 +5,12 @@ import moment from 'moment';
 
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
 
+// destructuring imports from antd
 const { Text, Title } = Typography;
 const { Option } = Select;
+
+// demo image for cases of news without an image thumbnail
+const demoImage = 'http://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg';
 
 const News = ({ simplified }) => {
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 6 : 12 })
@@ -21,6 +25,20 @@ const News = ({ simplified }) => {
             <a href={news.url} target='_blank' rel='noreferrer'>
               <div className="news-image-container">
                 <Title className='news-title' level={4}>{news.name}</Title>
+                <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt="news" className='news-title-image' />
+              </div>
+              <p>
+                {news.description > 100 
+                  ? `${news.description.substring(0, 100)}...`
+                  : news.description
+                }
+              </p>
+              <div className="provider-container">
+                <div>
+                  <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl  || demoImage}  alt='avatar'/>
+                  <Text  className='provider-name'>{news.provider[0]?.name}</Text>
+                </div>
+                <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
               </div>
             </a>
           </Card>
