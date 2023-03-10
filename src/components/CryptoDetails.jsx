@@ -85,10 +85,10 @@ const CryptoDetails = () => {
         </Col>
       </Col>
       <Col className="coin-desc-link">
-        <Row className="coin-desc">
+        <Col className="coin-desc">
           <Title level={3} className="coin-details-heading">What is {cryptoDetails?.name}?</Title>
           <p>{cryptoDetails && cryptoDetails.description && HTMLReactParser(cryptoDetails.description)}</p>
-        </Row>
+        </Col>
         <Col className='coin-links'>
           <Title level={3} className='coin-details-heading'>
             {cryptoDetails?.name} Links
