@@ -20,9 +20,6 @@ function App() {
               <Route exact path='/'>
                 <HomePage />
               </Route>
-              <Route exact path='/exchanges'>
-                <Exchange />
-              </Route>
               <Route exact path='/cryptocurrencies'>
                 <Cryptocurrencies />
               </Route>
